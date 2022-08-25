@@ -1,7 +1,10 @@
 Ext.define('DefectEntryHistory.view.main.Main', {
   extend: 'Ext.panel.Panel',
 
-  requires: ['DefectEntryHistory.view.form.Config'],
+  requires: [
+    'DefectEntryHistory.view.grid.Grid',
+    'DefectEntryHistory.view.form.Config',
+  ],
   xtype: 'app-main',
   layout: 'border',
   title: 'Defect Entry History Rpt',
@@ -30,6 +33,16 @@ Ext.define('DefectEntryHistory.view.main.Main', {
     },
   ],
   items: [
+    {
+      region: 'center',
+      layout: 'fit',
+      items: [
+        {
+          xtype: 'grid',
+          reference: 'gridArea',
+        },
+      ],
+    },
     {
       xtype: 'form-configform',
       region: 'east',
