@@ -1,7 +1,10 @@
 Ext.define('DefectEntryHistory.view.form.Config', {
   extend: 'Ext.form.Panel',
 
+  controller: 'form-configform',
   xtype: 'form-configform',
+
+  requires: ['DefectEntryHistory.view.form.ConfigController'],
 
   collapsible: true,
   defaults: {
@@ -132,12 +135,18 @@ Ext.define('DefectEntryHistory.view.form.Config', {
   ],
   buttons: [
     {
+      listeners: {
+        click: 'onResetForm',
+      },
       text: 'Reset',
       tooltip: 'Click to reset the form and report values.',
     },
     {
       text: 'Submit',
       formBind: true,
+      listeners: {
+        click: 'onSubmitForm',
+      },
       tooltip: 'Click to submit the form and load the report data.',
     },
   ],
