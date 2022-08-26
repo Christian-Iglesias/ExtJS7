@@ -1,9 +1,17 @@
 Ext.define('DefectEntryHistory.view.grid.Grid', {
   extend: 'Ext.grid.Panel',
 
+  viewModel: {
+    type: 'gridmodel',
+  },
+
   xtype: 'grid',
 
+  requires: ['DefectEntryHistory.view.grid.GridModel'],
   width: '100%',
+  bind: {
+    store: '{grid}',
+  },
   emptyText: 'No data to display',
   columns: {
     defaults: {
