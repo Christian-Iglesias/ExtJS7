@@ -12,6 +12,7 @@ Ext.define('DefectEntryHistory.view.form.Config', {
     'DefectEntryHistory.view.form.ConfigController',
     'DefectEntryHistory.view.form.ConfigModel',
     'DefectEntryHistory.store.Disposition',
+    'DefectEntryHistory.store.TransactionType',
   ],
 
   collapsible: true,
@@ -89,6 +90,9 @@ Ext.define('DefectEntryHistory.view.form.Config', {
           queryMode: 'local',
           valueField: 'value',
           filterPickList: true,
+          store: {
+            type: 'transactionType',
+          },
         },
         {
           xtype: 'combobox',
