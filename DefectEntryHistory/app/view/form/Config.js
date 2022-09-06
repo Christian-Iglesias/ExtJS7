@@ -11,6 +11,7 @@ Ext.define('DefectEntryHistory.view.form.Config', {
   requires: [
     'DefectEntryHistory.view.form.ConfigController',
     'DefectEntryHistory.view.form.ConfigModel',
+    'DefectEntryHistory.store.Disposition',
   ],
 
   collapsible: true,
@@ -113,6 +114,9 @@ Ext.define('DefectEntryHistory.view.form.Config', {
           displayField: 'fieldName',
           queryMode: 'local',
           valueField: 'value',
+          store: {
+            type: 'disposition',
+          },
         },
         {
           xtype: 'fieldcontainer',
