@@ -2,9 +2,16 @@ Ext.define('DefectEntryHistory.view.form.Config', {
   extend: 'Ext.form.Panel',
 
   controller: 'form-configform',
+  viewModel: {
+    type: 'form-configform',
+  },
+
   xtype: 'form-configform',
 
-  requires: ['DefectEntryHistory.view.form.ConfigController'],
+  requires: [
+    'DefectEntryHistory.view.form.ConfigController',
+    'DefectEntryHistory.view.form.ConfigModel',
+  ],
 
   collapsible: true,
   defaults: {
@@ -86,6 +93,9 @@ Ext.define('DefectEntryHistory.view.form.Config', {
           xtype: 'combobox',
           fieldLabel: 'Classifier:',
           reference: 'classifier',
+          bind: {
+            store: '{users}',
+          },
           displayField: 'USERNAME',
           queryMode: 'local',
           valueField: 'USERNAME',
