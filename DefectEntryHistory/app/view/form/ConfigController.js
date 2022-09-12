@@ -19,6 +19,11 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
     const endDate = Ext.Date.format(this.lookup('endDate').getValue(), 'Y/m/d');
     const endTime = Ext.Date.format(this.lookup('endTime').getValue(), 'G:i:s');
 
+    const transactionType = this.lookup('transactionType').getValue();
+    const defectType = this.lookup('defectType').getGroupValue();
+    const classifier = this.lookup('classifier').getValue();
+    const barcode = this.lookup('barcode').getValue();
+    const disposition = this.lookup('disposition').getValue();
     const store = Ext.getStore('grid');
 
     const filterArray = [
@@ -33,6 +38,46 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
         value: `${endDate} ${endTime}`,
       },
     ];
+
+    if (!this.arrayIsEmpty(transactionType)) {
+      filterArray.push({
+        operator: 'in',
+        property: 'transactionType',
+        value: transactionType,
+      });
+    }
+
+    if (defectType) {
+      filterArray.push({
+        operator: 'like',
+        property: 'defectType',
+        value: defectType,
+      });
+    }
+
+    if (classifier) {
+      filterArray.push({
+        operator: 'like',
+        property: 'classifier',
+        value: classifier,
+      });
+    }
+
+    if (barcode) {
+      filterArray.push({
+        operator: 'like',
+        property: 'barcode',
+        value: barcode,
+      });
+    }
+
+    if (disposition) {
+      filterArray.push({
+        operator: 'eq',
+        property: 'disposition',
+        value: disposition,
+      });
+    }
 
     store
       .getProxy()
