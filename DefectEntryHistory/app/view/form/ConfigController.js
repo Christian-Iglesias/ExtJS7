@@ -3,6 +3,10 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
 
   alias: 'controller.form-configform',
 
+  init() {
+    this.getApplicationOptions();
+  },
+
   /**
    * Submits the form data.
    *
@@ -91,6 +95,22 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
 
   onResetForm() {
     this.getView().getForm().reset();
+  },
+
+  /**
+   * Get the application info.
+   *
+   */
+  getApplicationOptions() {
+    Ext.Ajax.request({
+      url: `/api/rdeq_level2/applications/17126/options`,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+      scope: this,
+    });
   },
 
   // To check if an array is empty using javascript
