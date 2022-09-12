@@ -1,7 +1,11 @@
 Ext.define('DefectEntryHistory.view.main.Main', {
   extend: 'Ext.panel.Panel',
 
+  viewModel: {
+    type: 'main',
+  },
   requires: [
+    'DefectEntryHistory.view.main.MainModel',
     'DefectEntryHistory.view.grid.Grid',
     'DefectEntryHistory.view.form.Config',
   ],

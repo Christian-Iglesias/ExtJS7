@@ -110,7 +110,34 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
       },
       method: 'GET',
       scope: this,
+      success: 'requestOptionSuccess',
     });
+  },
+
+  /**
+   * Handles the follow-up after successfully completing the Ajax request.
+   *
+   * @param {object} response The XmlHttpRequest (Ajax) response.
+   * @param {object} options  The parameters to the request call.
+   */
+  requestOptionSuccess(response, options) {
+    /**
+     * @type {object} The main viewmodel.
+     */
+    const MAIN = this.getViewModel();
+
+    /**
+     * @type {object} The response status text from the AJAX request.
+     */
+    const RESPONSE = Ext.decode(response.responseText);
+
+    /**
+     * @type {object} The sign out button.
+     */
+
+    if (options.url === `/api/rdeq_level2/applications/17126/options`) {
+      MAIN.set('application.options', RESPONSE.data);
+    }
   },
 
   // To check if an array is empty using javascript
