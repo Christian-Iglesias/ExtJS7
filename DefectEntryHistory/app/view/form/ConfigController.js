@@ -207,4 +207,41 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
     // Otherwise, return FALSE.
     return false;
   },
+  /**
+   * Adds a tooltip to the supplied component based on the configured
+   * reference property.
+   *
+   * @param {object} component The object to add the tooltip.
+   */
+  addToolTip(component) {
+    /**
+     * @type {Ext.app.ViewModel} The main viewmodel.
+     */
+    const MAIN = this.getViewModel().getParent();
+
+    /**
+     * @type {string} The string to use for the tooltip.
+     */
+    let html = MAIN.get('tooltip.default');
+
+    if (component.reference in MAIN.get('tooltip')) {
+      html = MAIN.get(`tooltip.${component.reference}`);
+    }
+
+    Ext.create('Ext.tip.ToolTip', {
+      html,
+      target: component.id,
+      maxWidth: 300,
+      width: '100%',
+    });
+  },
+
+  /**
+   * Handles afterrender event actions.
+   *
+   * @param {object} component The component triggering the afterrender event.
+   */
+  onAfterrender(component) {
+    this.addToolTip(component);
+  },
 });

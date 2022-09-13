@@ -32,6 +32,9 @@ Ext.define('DefectEntryHistory.view.form.Config', {
         labelAlign: 'right',
         labelWidth: 125,
         allowBlank: false,
+        listeners: {
+          afterrender: 'onAfterrender',
+        },
       },
 
       items: [
@@ -79,6 +82,9 @@ Ext.define('DefectEntryHistory.view.form.Config', {
         labelAlign: 'right',
         labelWidth: 125,
         allowBlank: true,
+        listeners: {
+          afterrender: 'onAfterrender',
+        },
       },
       items: [
         {
