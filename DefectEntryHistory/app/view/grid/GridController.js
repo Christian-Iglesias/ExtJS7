@@ -15,6 +15,12 @@ Ext.define('DefectEntryHistory.view.grid.GridController', {
       this.getView().up('panel').up('panel').lookup('exportButton').enable();
     }
     if (!successful) {
+      Ext.Msg.show({
+        title: 'Form Status',
+        message: 'Not Found: The resource does not exist.',
+        width: 300,
+        buttons: Ext.MessageBox.OK,
+      });
       store.removeAll();
     }
   },

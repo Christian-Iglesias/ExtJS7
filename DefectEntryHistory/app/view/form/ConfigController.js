@@ -113,6 +113,7 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
       method: 'GET',
       scope: this,
       success: 'requestOptionSuccess',
+      failure: 'requestOptionFailure',
     });
   },
 
@@ -145,6 +146,31 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
 
       this.loadDefaultValues();
     }
+  },
+
+  /**
+   * Displays an error message based on the request error.
+   *
+   * @param {object} response The XmlHttpRequest (Ajax) response.
+   */
+  requestOptionFailure(response) {
+    /**
+     * @type {object} The main viewmodel.
+     */
+    const MAIN = this.getViewModel().getParent();
+
+    /**
+     * @type {string} The error message to display to the user.
+     */
+    const MESSAGE = MAIN.get(`error.${response.status}`);
+
+    Ext.Msg.show({
+      buttons: Ext.Msg.OK,
+      closable: false,
+      icon: Ext.Msg.ERROR,
+      message: `${response.statusText}: ${MESSAGE}`,
+      title: 'Form Status',
+    });
   },
   /**
    * Loads the default values for the required form fields.

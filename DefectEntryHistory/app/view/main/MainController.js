@@ -28,6 +28,7 @@ Ext.define('DefectEntryHistory.view.main.MainController', {
       method: 'GET',
       scope: this,
       success: 'requestSuccess',
+      failure: 'requestFailure',
     });
   },
 
@@ -50,6 +51,28 @@ Ext.define('DefectEntryHistory.view.main.MainController', {
   onHelp() {
     // adding wiki documentation link on help
     window.open(this.getViewModel().get('application.help'));
+  },
+
+  /**
+   * Displays an error message based on the request error.
+   *
+   * @param {object} response The XmlHttpRequest (Ajax) response.
+   */
+  requestFailure(response) {
+    /**
+     * @type {Ext.app.ViewModel} The main viewmodel.
+     */
+    const MAIN = this.getViewModel();
+
+    const MESSAGE = MAIN.get(`error.${response.status}`);
+
+    Ext.Msg.show({
+      buttons: Ext.Msg.OK,
+      closable: false,
+      icon: Ext.Msg.ERROR,
+      message: `${response.statusText}: ${MESSAGE}`,
+      title: 'User Authorization Status',
+    });
   },
 
   /**

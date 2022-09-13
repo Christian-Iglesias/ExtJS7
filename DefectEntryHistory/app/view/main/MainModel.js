@@ -11,6 +11,12 @@ Ext.define('DefectEntryHistory.view.main.MainModel', {
       name: null,
       options: null,
     },
+    error: {
+      404: 'The resource does not exist.',
+      405: 'The request method is known by the server but has been disabled and cannot be used.',
+      406: 'Cannot produce a response matching the list of acceptable values.',
+      500: 'The server was unable to complete the request.  Please try again.  If the error continues, then please contact your local IT Dept for assistance.',
+    },
     tooltip: {
       default: 'Tooltip needs configuring.',
       startTime: 'Uses UPDATE_DATE to limit the beginning time of the report.',
