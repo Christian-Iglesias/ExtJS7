@@ -18,7 +18,9 @@ Ext.define('DefectEntryHistory.view.main.MainController', {
    */
   getApplicationInfo() {
     Ext.Ajax.request({
-      url: `/api/rdeq_level2/applications/${MAIN.get('application.id')}`,
+      url: `/api/rdeq_level2/applications/${this.getViewModel().get(
+        'application.id',
+      )}`,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',

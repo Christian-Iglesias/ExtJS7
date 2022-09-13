@@ -103,7 +103,7 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
    */
   getApplicationOptions() {
     Ext.Ajax.request({
-      url: `/api/rdeq_level2/applications/${MAIN.get(
+      url: `/api/rdeq_level2/applications/${this.getViewModel().get(
         'application.id',
       )}/options`,
       headers: {
