@@ -24,6 +24,9 @@ Ext.define('DefectEntryHistory.view.main.Main', {
         {
           xtype: 'button',
           iconCls: 'fa fa-file-excel',
+          listeners: {
+            click: 'export',
+          },
           reference: 'exportButton',
           text: 'Export',
           margin: '0 5 0 5',
@@ -57,6 +60,11 @@ Ext.define('DefectEntryHistory.view.main.Main', {
     {
       xtype: 'form-configform',
       region: 'east',
+    },
+  ],
+  plugins: [
+    {
+      ptype: 'gridexporter',
     },
   ],
 });

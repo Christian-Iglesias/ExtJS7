@@ -1,13 +1,17 @@
 Ext.define('DefectEntryHistory.view.grid.Grid', {
   extend: 'Ext.grid.Panel',
 
+  controller: 'gridctlr',
   viewModel: {
     type: 'gridmodel',
   },
 
   xtype: 'grid',
 
-  requires: ['DefectEntryHistory.view.grid.GridModel'],
+  requires: [
+    'DefectEntryHistory.view.grid.GridController',
+    'DefectEntryHistory.view.grid.GridModel',
+  ],
   width: '100%',
   bind: {
     store: '{grid}',

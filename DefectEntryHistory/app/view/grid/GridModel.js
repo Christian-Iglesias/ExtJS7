@@ -32,6 +32,9 @@ Ext.define('DefectEntryHistory.view.grid.GridModel', {
       remoteSort: false,
       remoteFilter: true,
       sorters: [{ direction: 'ASC', property: 'updateDate' }],
+      listeners: {
+        load: 'onLoad',
+      },
     },
   },
 });

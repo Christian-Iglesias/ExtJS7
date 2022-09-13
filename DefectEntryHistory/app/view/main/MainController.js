@@ -29,6 +29,22 @@ Ext.define('DefectEntryHistory.view.main.MainController', {
     });
   },
 
+  /**
+   * Export to excell
+   */
+  export() {
+    const grid = this.lookup('gridArea');
+
+    grid.saveDocumentAs({
+      type: 'xlsx',
+      title: 'Defect Entry History',
+      fileName: `defectEntryHistory-${Ext.Date.format(
+        new Date(),
+        'Y-m-d',
+      )}.xlsx`,
+    });
+  },
+
   onHelp() {
     // adding wiki documentation link on help
     window.open(this.getViewModel().get('application.help'));
