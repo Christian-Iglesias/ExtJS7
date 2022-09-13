@@ -6,6 +6,9 @@ Ext.define('DefectEntryHistory.view.main.MainModel', {
 
   data: {
     application: {
+      help: null,
+      id: 17126,
+      name: null,
       options: null,
     },
   },

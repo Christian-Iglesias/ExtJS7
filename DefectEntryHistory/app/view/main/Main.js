@@ -1,17 +1,21 @@
 Ext.define('DefectEntryHistory.view.main.Main', {
   extend: 'Ext.panel.Panel',
 
+  controller: 'main',
   viewModel: {
     type: 'main',
   },
   requires: [
+    'DefectEntryHistory.view.main.MainController',
     'DefectEntryHistory.view.main.MainModel',
     'DefectEntryHistory.view.grid.Grid',
     'DefectEntryHistory.view.form.Config',
   ],
   xtype: 'app-main',
   layout: 'border',
-  title: 'Defect Entry History Rpt',
+  bind: {
+    title: '{ application.name }',
+  },
   dockedItems: [
     {
       dock: 'top',
@@ -29,6 +33,9 @@ Ext.define('DefectEntryHistory.view.main.Main', {
         {
           xtype: 'button',
           iconCls: 'x-fa fa-question',
+          listeners: {
+            click: 'onHelp',
+          },
           margin: '0 5 0 5',
           tooltip: 'View Help',
         },
