@@ -103,7 +103,9 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
    */
   getApplicationOptions() {
     Ext.Ajax.request({
-      url: `/api/rdeq_level2/applications/17126/options`,
+      url: `/api/rdeq_level2/applications/${MAIN.get(
+        'application.id',
+      )}/options`,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -135,7 +137,10 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
      * @type {object} The sign out button.
      */
 
-    if (options.url === `/api/rdeq_level2/applications/17126/options`) {
+    if (
+      options.url ===
+      `/api/rdeq_level2/applications/${MAIN.get('application.id')}/options`
+    ) {
       MAIN.set('application.options', RESPONSE.data);
 
       this.loadDefaultValues();

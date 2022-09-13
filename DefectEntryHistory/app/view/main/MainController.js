@@ -18,7 +18,7 @@ Ext.define('DefectEntryHistory.view.main.MainController', {
    */
   getApplicationInfo() {
     Ext.Ajax.request({
-      url: `/api/rdeq_level2/applications/17126`,
+      url: `/api/rdeq_level2/applications/${MAIN.get('application.id')}`,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -72,7 +72,10 @@ Ext.define('DefectEntryHistory.view.main.MainController', {
      */
     // const SIGN_OUT = this.lookupReference('signOutButton');
 
-    if (options.url === `/api/rdeq_level2/applications/17126`) {
+    if (
+      options.url ===
+      `/api/rdeq_level2/applications/${MAIN.get('application.id')}`
+    ) {
       MAIN.set('application.help', RESPONSE.data.webHelpLink);
       MAIN.set('application.name', RESPONSE.data.name);
     }
