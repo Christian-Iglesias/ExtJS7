@@ -137,7 +137,55 @@ Ext.define('DefectEntryHistory.view.form.ConfigController', {
 
     if (options.url === `/api/rdeq_level2/applications/17126/options`) {
       MAIN.set('application.options', RESPONSE.data);
+
+      this.loadDefaultValues();
     }
+  },
+  /**
+   * Loads the default values for the required form fields.
+   */
+  loadDefaultValues() {
+    /**
+     * @type {object} The values to use for the form fields.
+     */
+    const VALUES = {};
+
+    this.getViewModel()
+      .getParent()
+      .get('application.options')
+      .forEach((record) => {
+        if (record.fieldName === 'dateToSearch') {
+          VALUES[record.fieldName] = this.camalize(record.deflt);
+        } else {
+          VALUES[record.fieldName] = record.deflt;
+        }
+      });
+
+    VALUES.endDate = new Date();
+    VALUES.startDate = new Date(new Date().setDate(new Date().getDate() - 1))
+      .toISOString()
+      .substring(0, 10);
+
+    this.getView()
+      .getForm()
+      .getFields()
+      .items.forEach((field) => {
+        if (field.name in VALUES) {
+          field.setValue(VALUES[field.name]);
+        }
+      });
+  },
+
+  /**
+   * Camelize string
+   *
+   * @param {string} str Passed string
+   * @returns {string} Camelized string
+   */
+  camalize(str) {
+    return str
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
   },
 
   // To check if an array is empty using javascript
