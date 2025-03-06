@@ -1,7 +1,7 @@
 Ext.application({
-  name: 'DefectEntryHistor',
+  name: "DefectEntryHistory",
 
-  extend: 'DefectEntryHistory.Application',
+  extend: "DefectEntryHistory.Application",
 
-  autoCreateViewport: 'DefectEntryHistory.view.main.Main',
+  autoCreateViewport: "DefectEntryHistory.view.main.Main",
 });
