@@ -1,5 +1,5 @@
 Ext.application({
-  name: 'DefectEntryHistory',
+  name: 'DefectEntryHistor',
 
   extend: 'DefectEntryHistory.Application',
 
